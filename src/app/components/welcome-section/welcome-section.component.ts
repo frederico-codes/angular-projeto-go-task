@@ -11,7 +11,11 @@ export class WelcomeSectionComponent {
   private readonly _modalControllerService = inject( ModalControllService)
 
   openNewTaskModal(){
-    this._modalControllerService.openNewTaskModal()
+    const dialogRef = this._modalControllerService.openNewTaskModal()
+
+    dialogRef.closed.subscribe(( taskForm ) => {
+      console.log('Tarefa criada: ', taskForm)
+    })
   }
 }
 
