@@ -9,7 +9,7 @@
       <h1 class="font-semi-bold text-lg">Editar tarefa</h1>
     } -->
 
-    <img class="ml-auto cursor-pointer" src="/images/Close_Icon.svg" alt="">
+    <img class="ml-auto cursor-pointer" src="/images/Close_Icon.svg" alt="" (click) ="closeModal()">
   </div>
   <div class="p-4 border border-[#d1d5d8] flex flex-col gap-4">
     <div>
@@ -39,7 +39,8 @@
   </div>
   <div class="p-4 flex justify-end gap-2">
     <button class="py-3 px-4 bg-[#fafafa] rounded-xl text-sm font-semibold cursor-pointer
-    active: translate-y-1 transition-transform duration-75" type="button">
+    active: translate-y-1 transition-transform duration-75" type="button"
+    (click) = "closeModal()">
       Cancelar
     </button>
     <button class="{{`py-3 px-4 rounded-xl text-white text-sm font-semibold cursor-pointer

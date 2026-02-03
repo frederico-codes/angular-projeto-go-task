@@ -20,8 +20,9 @@ export class ModalControllService{
 
 
   openNewTaskModal(){
-    return this._dialog.open(TaskFormModalComponent,{
+    return this._dialog.open<ITaskFormControls>(TaskFormModalComponent,{
       ...this.modalSizeOptions,
+      disableClose:true,
       data: {
         mode: 'create',
         formValues: {
@@ -33,8 +34,9 @@ export class ModalControllService{
   }
 
   openEditTaskModal(formValues: ITaskFormControls){
-    return this._dialog.open(TaskFormModalComponent,{
+    return this._dialog.open<ITaskFormControls>(TaskFormModalComponent,{
       ...this.modalSizeOptions,
+      disableClose:true,
        data: {
         mode: 'edit',
         formValues,
