@@ -42,7 +42,6 @@ export class ModalControllService{
         formValues,
       }
     })
-
   }
 
   openTaskCommentsModal(){

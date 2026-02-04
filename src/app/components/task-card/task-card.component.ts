@@ -9,6 +9,7 @@ import { ModalControllService } from '../../services/modal-controller.service';
 })
 export class TaskCardComponent {
   private readonly _modalControllerService = inject( ModalControllService)
+  
   openEditTaskModal() {
     const dialogRef = this._modalControllerService.openEditTaskModal({
       name: 'Nome tarefa',
