@@ -1,5 +1,8 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
+import { ITask } from "../interfaces/task.interface";
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -7,14 +10,14 @@ import { BehaviorSubject } from "rxjs";
 
 export class TaskService{
   // Tarefas A fazer
-  private todoTasks$ = new BehaviorSubject<any[]>([])
+  private todoTasks$ = new BehaviorSubject<ITask[]>([])
   readonly todoTasks = this.todoTasks$.asObservable()
 
   // Tarefas em Fazendo
-  private doingTasks$ = new BehaviorSubject<any[]>([])
+  private doingTasks$ = new BehaviorSubject<ITask[]>([])
   readonly doingTasks = this.todoTasks$.asObservable()
 
   // Tarefas em Concluído
-  private doneTasks$ = new BehaviorSubject<any[]>([])
+  private doneTasks$ = new BehaviorSubject<ITask[]>([])
   readonly doneTasks = this.todoTasks$.asObservable()
 }
