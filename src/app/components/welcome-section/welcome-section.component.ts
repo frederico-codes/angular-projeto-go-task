@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ModalControllService } from '../../services/modal-controller.service';
+import { generateUniqueWithTimestamp } from '../../utils/generate-unique-id-with-timestamp';
 
 @Component({
   selector: 'app-welcome-section',
@@ -9,6 +10,10 @@ import { ModalControllService } from '../../services/modal-controller.service';
 })
 export class WelcomeSectionComponent {
   private readonly _modalControllerService = inject( ModalControllService)
+
+  constructor() {
+    console.log(generateUniqueWithTimestamp())
+  }
 
   openNewTaskModal(){
     const dialogRef = this._modalControllerService.openNewTaskModal()
