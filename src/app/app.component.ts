@@ -4,6 +4,7 @@ import { WelcomeSectionComponent } from "./components/welcome-section/welcome-se
 import { TaskListSectionComponent } from "./components/task-list-section/task-list-section.component";
 import { TaskFormModalComponent } from "./components/task-form-modal/task-form-modal.component";
 import { TaskCommentsModalComponent } from "./components/task-comments-modal/task-comments-modal.component";
+import { MainContentComponent } from './components/main-content/main-content.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ import { TaskCommentsModalComponent } from "./components/task-comments-modal/tas
     WelcomeSectionComponent,
     TaskListSectionComponent,
     TaskFormModalComponent,
-    TaskCommentsModalComponent
+    TaskCommentsModalComponent,
+    MainContentComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
