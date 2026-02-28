@@ -66,6 +66,23 @@ export class TaskService{
     }
   }
 
+  updateTaskNameAndDescription(taskId: string, taskCurrentStatus: TaskStatus, newTaskName: string, newTaskDescription: string){
+    const currentTaskList = this.getTaskListByStatus(taskCurrentStatus)
+    const currentTaskIndex = currentTaskList.value.findIndex(task => task.id === taskId)
+
+    if(currentTaskIndex > -1){
+      const updatedTaskList = [...currentTaskList.value]
+
+      updatedTaskList[currentTaskIndex] = {
+        ...updatedTaskList[currentTaskIndex],
+        name: newTaskName,
+        description: newTaskDescription
+      }
+
+      currentTaskList.next(updatedTaskList)
+    }
+  }
+
   private getTaskListByStatus(taskStatus: TaskStatus){
     const taskListObj = {
       [TaskStatusEnum.TODO]: this.todoTasks$,
@@ -76,7 +93,8 @@ export class TaskService{
     return taskListObj[ taskStatus]
   }
 
-  carregarListaAtualDeTodos(){
-    console.log('Lista atual TODOS: ', this.todoTasks$.value)
-  }
+
+
+
+
 }
