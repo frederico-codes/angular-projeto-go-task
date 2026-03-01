@@ -22,14 +22,25 @@ export class TaskCardComponent {
     })
 
     dialogRef.closed.subscribe(( taskform ) => {
-     if(taskform){
-      this._taskService.updateTaskNameAndDescription(
-        this.task.id,
-        this.task.status,
-        taskform.name,
-        taskform.description
-      )
-     }
+      if(taskform){
+        this._taskService.updateTaskNameAndDescription(
+          this.task.id,
+          this.task.status,
+          taskform.name,
+          taskform.description
+        )
+      }
+    })
+  }
+
+  openTaskCommentsModal() {
+    const dialogRef = this._modalControllerService.openTaskCommentsModal(this.task)
+
+    dialogRef.closed.subscribe((taskCommentsChanged) => {
+      if(taskCommentsChanged){
+        // atualizar a fonte de verdade
+        this._taskService.updateTaskComments(this.task.id, this.task.status, this.task.comments)
+      }
     })
   }
 

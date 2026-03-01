@@ -4,6 +4,7 @@ import { Dialog } from '@angular/cdk/dialog'
 import { TaskFormModalComponent } from "../components/task-form-modal/task-form-modal.component"
 import { TaskCommentsModalComponent } from "../components/task-comments-modal/task-comments-modal.component"
 import { ITaskFormControls } from "../interfaces/task-form-controls.interface"
+import { ITask } from "../interfaces/task.interface"
 
 @Injectable({
   providedIn:'root',
@@ -44,9 +45,11 @@ export class ModalControllService{
     })
   }
 
-  openTaskCommentsModal(){
+  openTaskCommentsModal(task: ITask){
     return this._dialog.open(TaskCommentsModalComponent,{
       ...this.modalSizeOptions,
+      disableClose:true,
+      data: task,
     })
   }
 }
