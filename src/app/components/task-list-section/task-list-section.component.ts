@@ -64,7 +64,7 @@ export class TaskListSectionComponent {
         event.container.data,
         event.previousIndex,
         event.currentIndex,
-      );
+      )
     } else {
       transferArrayItem(
         event.previousContainer.data,

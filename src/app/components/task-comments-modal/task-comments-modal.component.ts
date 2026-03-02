@@ -1,5 +1,5 @@
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IComment } from '../../interfaces/comment.interface';
 import { generateUniqueWithTimestamp } from '../../utils/generate-unique-id-with-timestamp';
@@ -15,8 +15,11 @@ export class TaskCommentsModalComponent {
   taskCommentsChanged = false
   commentControl = new FormControl('', [Validators.required])
 
+  @ViewChild('commentInput') commentInputRef! : ElementRef<HTMLInputElement>
+
   readonly _task: ITask = inject(DIALOG_DATA)
   readonly _dialogRef: DialogRef<boolean> = inject(DialogRef)
+
 
   onAddComment(){
     // criar um comentário
@@ -32,6 +35,17 @@ export class TaskCommentsModalComponent {
     this.commentControl.reset()
 
     //atualizar a flag/prop alterações nos comentários
+    this.taskCommentsChanged = true
+
+    // focandono elemento de input
+    this.commentInputRef.nativeElement.focus()
+  }
+
+  onRemoveModal(commentId: string) {
+    this._task.comments = this._task.comments.filter(
+      (comment) => comment.id !== commentId
+    )
+
     this.taskCommentsChanged = true
   }
 
